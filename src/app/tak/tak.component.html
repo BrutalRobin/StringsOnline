@@ -1,0 +1,44 @@
+<app-header></app-header>
+<main>
+<div id="breadcrumbs">
+  <p class="breadcrumb"><span routerLink="/Forside">Forside</span> <span class="backslash"> \ </span> Varekurv</p>
+      <ng-template #order>
+  <p class="template2" routerLink="/Ordrerhistorik">OrdreHistorik</p></ng-template>
+  <ng-template [ngIf]="token === null" [ngIfElse]="order">
+    <p></p></ng-template>
+</div>
+<section id="contentgrid">
+  <app-sidenav></app-sidenav>
+  <div class="content">
+    <div class="card">
+      <h3>TAK FOR DIN BESTILLING</h3>
+      <div class="text">
+      <p>Ordrenr. <span class="green">{{basket.order.id}}</span></p>
+      <div class="lines" *ngFor="let item of basket.order.orderlines">
+        <p>{{item.name}}</p>
+        <p>{{item.quantity}} Stk.</p>
+        <p class="price1">DKK {{item.price}}</p>
+      </div>
+      <div class="price">
+       <p class="ialt">I alt</p><p class="price2">{{basket.order.total}}</p>
+      </div>
+      </div>
+    </div>
+<div class="orders">
+<h3>Faktureringsadresse</h3>
+<div class="adress1">
+  <p>{{basket.order.firstname}} {{basket.order.lastname}}</p>
+  <p>{{basket.order.address}}</p>
+  <p>{{basket.order.zipcode}} {{basket.order.city}}</p>
+</div>
+<h3>Leveringsadresse</h3>
+<div class="adress1">
+  <p>{{basket.order.firstname}} {{basket.order.lastname}}</p>
+  <p>{{basket.order.delivery_address}}</p>
+  <p>{{basket.order.delivery_zipcode}} {{basket.order.delivery_city}}</p>
+</div>
+</div>
+  </div>
+</section>
+</main>
+<app-footer></app-footer>

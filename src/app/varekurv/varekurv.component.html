@@ -1,0 +1,51 @@
+<app-header></app-header>
+<main>
+<div id="breadcrumbs">
+  <p class="breadcrumb"><span routerLink="/Forside">Forside</span> <span class="backslash"> \ </span> Varekurv</p>
+      <ng-template #order>
+  <p class="template2" routerLink="/Ordrerhistorik">OrdreHistorik</p></ng-template>
+  <ng-template [ngIf]="token === null" [ngIfElse]="order">
+    <p></p></ng-template>
+</div>
+<section id="contentgrid">
+  <app-sidenav></app-sidenav>
+  <div>
+    <ng-template [ngIf]="basket.status == false">
+      <div class="no">DIn kurv er tom fyld mig</div>
+    </ng-template>
+    <ng-template [ngIf]="basket.status == true">
+  <div class="content" *ngFor="let produkt of basket.cartlines">
+    <div class="image">
+      <img src="{{produkt.image_fullpath}}" alt="{{produkt.name}}_img">
+    </div>
+    <div class="text">
+      <h3 (click)="totalPrice()">{{produkt.name}}</h3>
+    </div>
+    <div class="amount">
+      <ng-template [ngIf]="produkt.quantity === '1'" [ngIfElse]="del">
+    <p class="minus"  (click)="deleteFromBasket(produkt.id)">-</p><p class="quan">{{produkt.quantity}}</p><p class="plus" (click)="updateBasket('plus', produkt.id, produkt.product_id, produkt.quantity )">+</p>
+  </ng-template>
+  <ng-template #del>
+    <p class="minus" (click)="updateBasket('minus', produkt.id, produkt.product_id, produkt.quantity )">-</p><p class="quan">{{produkt.quantity}}</p><p class="plus" (click)="updateBasket('plus', produkt.id, produkt.product_id, produkt.quantity )">+</p>
+  </ng-template>
+    <p></p><p></p><p></p>
+    </div>
+    <div class="action">
+      <ng-template [ngIf]="produkt.offerprice !== '0.00'" [ngIfElse]="nooffer">
+        <h4 class="price" id="price{{produkt.id}}" [innerHTML]='setPrice(produkt.quantity, produkt.offerprice)'>Pris: DKK {{produkt.offerprice | currency}}</h4>
+      </ng-template>
+      <ng-template #nooffer>
+        <h4 class="price" id="price{{produkt.id}}" [innerHTML]='setPrice(produkt.quantity, produkt.price)'>Pris: DKK {{produkt.price}}</h4>
+      </ng-template>
+        <button (click)="deleteFromBasket(produkt.id)" >X</button>
+    </div>
+  </div>
+  <h3 class="total" [innerHTML]="totalPrice()"></h3>
+  <button (click)="rydKurv()">Ryd</button>
+  <button routerLink="/Kasse" class="kassebutton" >Til Kassen</button>
+</ng-template>
+  </div>
+</section>
+</main>
+<app-footer></app-footer>
+

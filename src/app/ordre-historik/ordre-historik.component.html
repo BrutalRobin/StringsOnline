@@ -1,0 +1,24 @@
+<app-header></app-header>
+<main>
+<div id="breadcrumbs">
+  <p class="breadcrumb"><span routerLink="/Forside">Forside</span> <span class="backslash"> \ </span> Varekurv</p>
+      <ng-template #order>
+  <p class="template2" routerLink="/Ordrerhistorik">OrdreHistorik</p></ng-template>
+  <ng-template [ngIf]="token === null" [ngIfElse]="order">
+    <p></p></ng-template>
+</div>
+<section id="contentgrid">
+  <app-sidenav></app-sidenav>
+  <div>
+  <div class="content" *ngFor="let order of orders.items">
+<div class="date">
+<h3 [innerHTML]='formatTime(order.created)'></h3></div>
+<div class="total">
+<h3>DKK {{order.total}}</h3></div>
+<div class="number">
+<h3 > Ordrenr. <span class="green">{{order.id}}</span></h3></div>
+  </div>
+  </div>
+</section>
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300&display=swap');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+$green: #00F9B6;
+$grey: #85807d;
+$red: #D10061;
+#breadcrumbs{
+  width: 90%;
+  margin: auto;
+  margin-top: 5vh;
+  border-top:1px solid $grey;
+  border-bottom:1px solid $grey;
+  font-family: 'Titillium Web', sans-serif;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  .breadcrumb{
+    display: table-cell;
+    margin: 0;
+    font-size: 13px;
+    background-image: url(../../assets/images/home-icon.png);
+    background-size: 20px;
+    background-position: 0% 40%;
+    background-repeat: no-repeat;
+    padding-left: 23px;
+    padding-top: 2px;
+    height: 25px;
+    vertical-align: middle;
+    color: $green;
+    background-color: #131313;
+    .backslash{
+      color: $grey;
+    }
+
+  }
+  .template2{
+    color: $green;
+    margin: 0;
+    text-align: right;
+    cursor: pointer;
+  }
+}
+#contentgrid{
+  display: grid;
+  margin: auto;
+  width: 90%;
+  grid-template-columns: 15% 85%;
+  margin-top: 5vh;
+  .content1{
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    height: fit-content;
+    overflow: hidden;
+    margin-bottom: 2vh;
+    h1{
+      color: white;
+    }
+  }}

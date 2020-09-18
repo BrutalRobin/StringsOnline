@@ -1,0 +1,20 @@
+<app-header></app-header>
+<main>
+  <div id="breadcrumbs">
+    <p class="breadcrumb"><span routerLink="/Forside">Forside</span> <span class="backslash"> \ </span>Login</p>
+  </div>
+  <section id="contentgrid">
+  <app-sidenav></app-sidenav>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <h1>Login</h1>
+    <h3>Indtast brugernavn og adgangskode for at logge på</h3>
+    <label class="username-label" for="username">Brugernavn:<span class="red">*</span></label>
+    <input (focus)="focus()" type="text" name="username" id="username" formControlName="username" placeholder="Indtast dit brugernavn" />
+    <label class="password-label" for="password">Adgangskode:<span class="red">*</span></label>
+    <input (focus)="focus()" type="password" name="password" id="password" formControlName="password" placeholder="Indtast din adgangskode" />
+    <button type="login">Login</button>
+    <p class="error"></p>
+  </form>
+
+  </section>
+  <app-footer></app-footer>

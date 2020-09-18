@@ -1,0 +1,61 @@
+<app-header></app-header>
+<main>
+<div id="breadcrumbs">
+  <p class="breadcrumb"><span routerLink="/Forside">Forside</span> <span class="backslash"> \ </span>{{group}} <span class="backslash"> \ </span>{{subgroup}}<span class="backslash"> \ </span>{{produkt.item.name}}</p>
+      <ng-template #order>
+  <p class="template2" routerLink="/Ordrerhistorik">OrdreHistorik</p></ng-template>
+  <ng-template [ngIf]="token === null" [ngIfElse]="order">
+    <p></p></ng-template>
+</div>
+<section id="contentgrid">
+  <app-sidenav></app-sidenav>
+  <div class="content">
+      <div class="image">
+      <img src="{{produkt.item.image.fullpath}}" alt="{{produkt.item.image.filename}}">
+      <img class="off" *ngFor="let img of produkt.item.gallery" src="{{img.fullpath}}" alt="{{img.filename}}">
+    </div>
+    <div class="text">
+      <h3>{{produkt.item.name}}</h3>
+        <p>{{produkt.item.description_long}}</p>
+    </div>
+    <div class="action">
+      <ng-container *ngFor="let brand of brands.items;">
+        <ng-container *ngIf="brand.title == produkt.item.brand">
+          <img routerLink="/Brand/{{brand.id}}" src="{{brand.image_fullpath}}" alt="produktimage">
+        </ng-container>
+      </ng-container>
+      <ng-template [ngIf]="produkt.item.offerprice !== '0.00'" [ngIfElse]="nooffer">
+        <h4 class="price" id="price{{produkt.item.id}}"><span>Tilbud:</span> DKK {{produkt.item.offerprice}}</h4>
+      </ng-template>
+      <ng-template #nooffer>
+        <h4 class="price" id="price{{produkt.item.id}}">Pris: DKK {{produkt.item.price}}</h4>
+      </ng-template>
+      <ng-template [ngIf]="token === null" [ngIfElse]="koeb">
+        <button [ngStyle]="{
+          'width': setWidth(produkt.item.id)}">Login for at købe</button>
+      </ng-template>
+      <ng-template [ngIf]="added === 1" [ngIfElse]="notadded">
+        <p class="added" [ngStyle]="{
+          'width': setWidth(produkt.item.id)}">{{addednumber}} tilføjet til kurv</p>
+      </ng-template>
+      <ng-template #notadded>
+      </ng-template>
+     <ng-template #koeb>
+      <div class="shop">
+      <input type="integer" value="1" #antal> <button [ngStyle]="{
+        'width': setWidth(produkt.item.id)}" (click)="addToBasket(produkt.item.id, antal.value )">Læg i kurv</button></div></ng-template>
+      <p class="stock">{{produkt.item.stock}}+ på lager</p>
+      <ng-template [ngIf]="token === null" [ngIfElse]="rate">
+        <ngb-rating [max]="5" [(rate)]="currentRate" [readonly]="readonly"></ngb-rating>
+      </ng-template>
+      <ng-template #rate>
+      <ngb-rating [max]="5" [(rate)]="currentRate" (click)="sendRating(produkt.item.id)"></ngb-rating></ng-template>
+      <ng-template [ngIf]="rated === 1">
+        <p class="rated" [ngStyle]="{
+          'width': setWidth(produkt.item.id)}">Rated!</p>
+      </ng-template>
+    </div>
+    </div>
+</section>
+</main>
+<app-footer></app-footer>

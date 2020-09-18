@@ -1,0 +1,20 @@
+<div class="sidenav">
+<ul *ngFor="let navlink of navlinks.items; let i = index" >
+  <li>
+    <input type="checkbox" id="list-item-{{i}}">
+    <label for="list-item-{{i}}">{{navlink.title}}</label>
+    <ul>
+      <li *ngFor="let navsublink of navlink.subgroups" routerLink="/Produktliste/{{navlink.id}}/{{navsublink.id}}">{{navsublink.title}}</li>
+    </ul>
+  </li>
+</ul>
+<ul>
+  <li>
+    <input type="checkbox" id="list-item-200">
+    <label for="list-item-200">Brands</label>
+    <ul>
+      <li *ngFor="let brand of brands.items" routerLink="/Brand/{{brand.id}}">{{brand.title}}</li>
+    </ul>
+  </li>
+</ul>
+</div>

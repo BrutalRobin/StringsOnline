@@ -1,0 +1,22 @@
+.footergrid{
+  display: grid;
+  width: 100%;
+  background-color: #393939;
+  justify-items: center;
+  img{
+    padding: 2vh;
+    width: 50%;
+  }
+}
+@media only screen and (max-width: 600px) {
+  .footergrid{
+    display: grid;
+    width: 100%;
+    background-color: #393939;
+    justify-items: center;
+    img{
+      padding: 2vh;
+      width: 70%;
+    }
+  }
+}

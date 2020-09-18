@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,300&display=swap');
+@import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+$green: #00F9B6;
+$grey: #85807d;
+$red: #D10061;
+.sidenav{
+  border: 2px solid #194B49;
+  background-color: #0A1D1C;
+  width: 90%;
+  transition: all .5s ease-in-out;
+  margin-bottom: 2vh;
+}
+ul{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  padding: 0 5%;
+  font-family: 'Titillium Web', sans-serif;
+  transition: all .5s ease-in-out;
+  font-size: calc(10px + 2 * ((100vw - 320px) / 680));
+}
+
+label{
+  display: block;
+  cursor: pointer;
+  padding: 10px;
+  color: $green;
+  transition: all .5s ease-in-out;
+  max-width: 50px;
+}
+
+label:hover{
+  color: white;
+  transition: all .5s ease-in-out;
+}
+
+
+ul ul li{
+  padding: 10px;
+  color: $green;
+  transition: all .5s ease-in-out;
+  cursor: pointer;
+  font-size: 13px;
+}
+ul ul li:hover{
+  padding-left: 15px;
+  color: white;
+  transition: all .5s ease-in-out;
+}
+ul ul li:focus{
+outline: 0;
+}
+
+
+input[type="checkbox"]{
+  position: absolute;
+  left: -9999px;
+  transition: all .5s ease-in-out;
+}
+
+input[type="checkbox"] ~ ul{
+  height: 0;
+  transform: scaleY(0);
+  transition: all .5s ease-in-out;
+  transform-origin: top;
+}
+
+input[type="checkbox"]:checked ~ ul{
+  height: 100%;
+  transform-origin: top;
+  transition: all .5s ease-in-out;
+  transform: scaleY(1);
+}
+
+input[type="checkbox"]:checked + label{
+  color: white;
+  transition: all .5s ease-in-out;
+}
+
+@media only screen and (max-width: 600px) {
+  .sidenav{
+display: grid;
+grid-template-columns: 1fr 1fr 1fr;
+  }
+
+}
+

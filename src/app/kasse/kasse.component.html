@@ -1,0 +1,33 @@
+<app-header></app-header>
+<main>
+  <div id="breadcrumbs">
+    <p class="breadcrumb"><span routerLink="/Forside">Forside</span> <span class="backslash"> \ </span>Login</p>
+    <ng-template #order>
+      <p class="template2" routerLink="/Ordrerhistorik">OrdreHistorik</p></ng-template>
+      <ng-template [ngIf]="token === null" [ngIfElse]="order">
+        <p></p></ng-template>
+    </div>
+  <section id="contentgrid">
+  <app-sidenav></app-sidenav>
+  <form [formGroup]="koebForm" (ngSubmit)="onSubmit()" class="koeb-form">
+    <div>
+    <h1 (click)="log()">Kasse</h1>
+    <h3>Fakturerings- & leveringsadresse</h3></div>
+    <h3>Email & telefon</h3>
+    <h3>Betalingsmetode</h3>
+    <input (focus)="focus()" type="text" name="fornavn" id="fornavn" formControlName="fornavn" placeholder="Fornavn" />
+    <input (focus)="focus()" type="text" name="efternavn" id="efternavn" formControlName="efternavn" placeholder="Efternavn" />
+    <input (focus)="focus()" type="text" name="gade" id="gade" formControlName="gade" placeholder="Gade/vej og husnummer" />
+    <input (focus)="focus()" type="number" name="postnr" id="postnr" formControlName="postnr" placeholder="Postnr." />
+    <input (focus)="focus()" type="text" name="by" id="by" formControlName="by" placeholder="By" />
+    <input (focus)="focus()" type="email" name="email" id="email" formControlName="email" placeholder="Emailadresse" />
+    <input (focus)="focus()" type="number" name="tele" id="tele" formControlName="tele" placeholder="Telefonnummer" />
+    <input (focus)="focus()" type="text" name="del_gade" id="del_gade" formControlName="del_gade" placeholder="Del gade" />
+    <input (focus)="focus()" type="number" name="del_postnr" id="del_postnr" formControlName="del_postnr" placeholder="del postnr" />
+    <input (focus)="focus()" type="text" name="del_by" id="del_by" formControlName="del_by" placeholder="del by" />
+    <button>Betal</button>
+    <p class="error"></p>
+  </form>
+
+  </section>
+  <app-footer></app-footer>

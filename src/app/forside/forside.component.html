@@ -1,0 +1,49 @@
+<app-header></app-header>
+<main>
+<div id="breadcrumbs">
+  <p class="breadcrumb">Forside</p>
+</div>
+<section id="contentgrid">
+<app-sidenav></app-sidenav>
+<div class="content1">
+<img src="../../assets/images/hero-banner.png" alt="Hero_banner">
+<h2>Mest Populære Elguitarer</h2>
+<div class="grid">
+<div class="content" *ngFor="let produkt of produktarray | slice:0:4">
+  <div class="image">
+  <img src="{{produkt.image_fullpath}}" alt="{{produkt.image_filename}}" routerLink="/Produktside/{{produkt.id}}">
+</div>
+<div class="text">
+  <h3 routerLink="/Produktside/{{products.items.title}}/{{products.items.subgroup.title}}/{{produkt.id}}">{{produkt.name}}</h3>
+  <ng-template #short class="template">
+  <p>{{produkt.description_short}} <span class="green" (click)="readlong(produkt.id)">Læs mere.</span></p></ng-template>
+  <ng-template [ngIf]="descriptionvar === produkt.id" [ngIfElse]="short" class="template">
+    <p>{{produkt.description_long}} <span class="green" (click)="readless()">Læs mindre.</span></p></ng-template>
+    <div class="action">
+      <ng-template [ngIf]="produkt.offerprice !== '0.00'" [ngIfElse]="nooffer">
+        <h4 class="price" id="price{{produkt.id}}"><span>Tilbud:</span> DKK {{produkt.offerprice}}</h4>
+      </ng-template>
+      <ng-template #nooffer>
+        <h4 class="price" id="price{{produkt.id}}">Pris: DKK {{produkt.price}}</h4>
+      </ng-template>
+      <ng-template [ngIf]="token === null" [ngIfElse]="koeb">
+        <button [ngStyle]="{
+          'width': setWidth(produkt.id)}">Login for at købe</button>
+      </ng-template>
+      <ng-template [ngIf]="added === produkt.id" [ngIfElse]="notadded">
+        <p class="added" [ngStyle]="{
+          'width': setWidth(produkt.id)}">Tilføjet til kurv</p>
+      </ng-template>
+      <ng-template #notadded>
+      </ng-template>
+     <ng-template #koeb>
+      <button [ngStyle]="{
+        'width': setWidth(produkt.id)}" (click)="addToBasket(produkt.id)">Læg i kurv</button></ng-template>
+    </div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<app-footer></app-footer>

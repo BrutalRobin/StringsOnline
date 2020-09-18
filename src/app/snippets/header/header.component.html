@@ -1,0 +1,24 @@
+<div id="contactheader">
+  <p class="contacttext1">SALES@STRINGSONLINE.COM</p>
+  <p class="contacttext2">+45 98 12 22 68 </p>
+  <div class="kurv">
+    <img routerLink="/Varekurv" src="../../../assets/images/cart-icon.png" alt="Cart_icon">
+    <p routerLink="/Varekurv" class="number">{{number}}
+    </p>
+  </div>
+</div>
+<nav id="navbar">
+<div class="navbar">
+  <h1 class="mobileheader">StringsOnline</h1>
+  <img routerLink="/Forside" src="../../../assets/images/header-bg.png" alt="heroheader">
+  <div class="textgrid">
+    <p class="headertext" routerLink="/Forside">Forside</p>
+    <p class="headertext" routerLink="/Betingelser">Salgs- og handelbetingelser</p>
+    <button routerLink="/Login">Login</button>
+  </div>
+</div>
+<div class="search">
+  <input [(ngModel)]="searchedValue" type="text" placeholder="Indtast Søgeord">
+  <button routerLink="/Search/{{searchedValue}}"></button>
+</div>
+</nav>
